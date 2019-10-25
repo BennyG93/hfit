@@ -23,39 +23,31 @@ export default class App extends React.Component {
   
   _renderButtons() {
     return (
-      <View style={styles.buttonWrapper}>
-        <TouchableHighlight underlayColor='#777' style={styles.button}>
-          <Text>Lap</Text>
-        </TouchableHighlight>
-        <TouchableHighlight underlayColor='#777' style={styles.button}>
-          <Text>Start</Text>
-        </TouchableHighlight>
-      </View>
+      <View>
+        <View style={styles.buttonWrapper}>
+          <TouchableHighlight underlayColor='#777' style={styles.timeButton}>
+          <Text>+15</Text>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor='#777' style={styles.timeButton}>
+          <Text>+60</Text>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor='#777' style={styles.timeButton}>
+          <Text>+</Text>
+          </TouchableHighlight>
+        </View>
+        <View style={styles.buttonWrapper}>
+          <TouchableHighlight underlayColor='#777' style={styles.button}>
+            <Text>Lap</Text>
+          </TouchableHighlight>
+          <TouchableHighlight underlayColor='#777' style={styles.button}>
+            <Text>Start</Text>
+          </TouchableHighlight>
+          </View>
+        </View>
     )
   }
   
   _renderLaps() {
-    let laps = [
-      { name: 'Lap 1', value: '00.00.01'},
-      { name: 'Lap 2', value: '00.00.02'},
-      { name: 'Lap 3', value: '00.00.03'},
-      { name: 'Lap 4', value: '00.00.04'},
-      { name: 'Lap 5', value: '00.00.05'},
-    ];
-
-    let ds = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-   });
-
-    class Stopwatch extends React.Component {
-      constructor(props) {
-        super(props);
-    
-        this.state = {
-          dataSource: ds.cloneWithRows(laps)
-        }
-      }
-    }
     return (
       <View style={styles.lapsWrapper}>
         <ListView
@@ -87,35 +79,12 @@ export default class App extends React.Component {
   }
 }
 
-// let laps = [
-//   { name: 'Lap 1', value: '00.00.01'},
-//   { name: 'Lap 2', value: '00.00.02'},
-//   { name: 'Lap 3', value: '00.00.03'},
-//   { name: 'Lap 4', value: '00.00.04'},
-//   { name: 'Lap 5', value: '00.00.05'},
-// ];
-
-// let ds = new ListView.DataSource({
-//   rowHasChanged: (row1, row2) => row1 !== row2,
-// });
-
-// class Stopwatch extends React.Component {
-//   constructor(props) {
-//     super(props);
-    
-//     this.state = {
-//       dataSource: ds.cloneWithRows(laps)
-//     }
-//   }
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   
   header: {
-    borderBottomWidth: 0.5,
     paddingTop: 20,
     paddingBottom: 10,
     backgroundColor: '#F9F9F9'
@@ -142,7 +111,6 @@ const styles = StyleSheet.create({
   },
   
   timerWrapperInner: {
-    borderWidth: 0.5,
     alignSelf: 'center',
   },
   
@@ -168,6 +136,15 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     borderRadius: 40,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  
+  timeButton: {
+    height: 30,
+    width: 60,
+    borderRadius: 10,
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center'
