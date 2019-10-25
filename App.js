@@ -1,6 +1,28 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TouchableHighlight, ListView } from 'react-native';
 
+let laps = [
+  { name: 'Lap 1', value: '00.00.01'},
+  { name: 'Lap 2', value: '00.00.02'},
+  { name: 'Lap 3', value: '00.00.03'},
+  { name: 'Lap 4', value: '00.00.04'},
+  { name: 'Lap 5', value: '00.00.05'},
+];
+
+let ds = new ListView.DataSource({
+  rowHasChanged: (row1, row2) => row1 !== row2,
+});
+
+class Stopwatch extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+       dataSource: ds.cloneWithRows(laps)
+     }
+   }
+ }
+
 export default class App extends React.Component {
   _renderTitle() {
     return (
@@ -35,27 +57,6 @@ export default class App extends React.Component {
   }
   
   _renderLaps() {
-    let laps = [
-      { name: 'Lap 1', value: '00.00.01'},
-      { name: 'Lap 2', value: '00.00.02'},
-      { name: 'Lap 3', value: '00.00.03'},
-      { name: 'Lap 4', value: '00.00.04'},
-      { name: 'Lap 5', value: '00.00.05'},
-    ];
-
-    let ds = new ListView.DataSource({
-      rowHasChanged: (row1, row2) => row1 !== row2,
-   });
-
-    class Stopwatch extends React.Component {
-      constructor(props) {
-        super(props);
-    
-        this.state = {
-          dataSource: ds.cloneWithRows(laps)
-        }
-      }
-    }
     return (
       <View style={styles.lapsWrapper}>
         <ListView
