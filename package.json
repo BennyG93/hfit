@@ -9,12 +9,15 @@
   },
   "dependencies": {
     "expo": "^35.0.0",
+    "hh-mm-ss": "^1.2.0",
     "react": "16.8.3",
     "react-clock": "^2.4.0",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-numeric-input": "^1.8.3",
     "react-native-stopwatch-timer": "0.0.21",
-    "react-native-web": "^0.11.7"
+    "react-native-web": "^0.11.7",
+    "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^7.1.0"
